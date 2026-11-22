@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Sven Onland’s mechanical engineering portfolio, featuring solar-car mechanisms, physical prototyping and precision motion control.">
+  <meta name="theme-color" content="#831410">
+  <title>Sven Onland | Mechanical Engineering Portfolio</title>
+  <style>
+    /* EMBEDDED_FONTS */
+    :root {
+      --red: #ad1e18;
+      --red-dark: #831410;
+      --paper: #faf8f5;
+      --ink: #242026;
+      --muted: #55504d;
+      --line: #ded8d5;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-padding-top: 24px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.65 Inter, "Segoe UI", sans-serif; }
+    a { color: inherit; text-underline-offset: .25em; }
+    :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { font-weight: 700; line-height: 1.07; text-wrap: balance; }
+    h1 { font-size: clamp(2.8rem, 5.35vw, 5.3rem); letter-spacing: -.055em; }
+    h2 { font-size: clamp(2rem, 4.15vw, 3.5rem); letter-spacing: -.045em; }
+    h3 { font-size: clamp(1.65rem, 3vw, 2.4rem); letter-spacing: -.035em; }
+    [hidden] { display: none !important; }
+
+    .wrap { width: min(1152px, calc(100% - 88px)); margin-inline: auto; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+    .skip-link { position: absolute; z-index: 2; left: 1rem; top: 1rem; padding: .6rem 1rem; background: white; color: var(--red-dark); }
+    .skip-link:not(:focus) { clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; padding: 0; }
+
+    .masthead {
+      background: linear-gradient(128deg, #6e110e, #981a15 58%, #821410);
+      color: var(--white);
+    }
+    .site-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 74px; border-bottom: 1px solid #ffffff38; }
+    .identity { font-size: clamp(1.375rem, 2.25vw, 1.75rem); font-weight: 700; letter-spacing: -.035em; }
+    .site-header nav { display: flex; flex-wrap: wrap; gap: .65rem 1.8rem; font-size: .875rem; }
+    .site-header a { text-decoration: none; }
+    .site-header a:hover { text-decoration: underline; }
+    .hero { display: grid; grid-template-columns: minmax(0, .87fr) minmax(0, 1.13fr); align-items: center; gap: clamp(2rem, 5vw, 4.75rem); padding-block: clamp(2.5rem, 5vw, 5rem); }
+    .eyebrow, .project-type { color: var(--red-dark); font-size: .8125rem; font-weight: 700; letter-spacing: .09em; line-height: 1.45; text-transform: uppercase; }
+    .hero .eyebrow { color: #ffdbd2; margin-bottom: 1rem; }
+    .hero-copy { max-width: 36ch; margin-top: 1.25rem; color: #fff1ec; font-size: clamp(1rem, 1.48vw, 1.125rem); }
+    .hero-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1.5rem; padding-inline: 1rem; border-radius: 3px; background: #fff9f6; color: #72100c; font-size: .875rem; font-weight: 700; text-decoration: none; }
+    .hero-link:hover { background: #fce2d9; }
+    .hero-link:focus-visible { outline-color: white; }
+
+    /* Set --x and --y on each image. Use --fit: contain to show the full image. */
+    .gallery { min-width: 0; position: relative; color: var(--ink); }
+    .gallery-slide img, .gallery-placeholder {
+      width: 100%;
+      aspect-ratio: var(--frame, 4 / 3);
+      background: #ece8e4;
+      border-radius: 4px;
+    }
+    .gallery-slide img {
+      display: block;
+      object-fit: var(--fit, cover);
+      object-position: var(--x, 50%) var(--y, 50%);
+    }
+    .gallery-placeholder {
+      display: grid;
+      place-items: center;
+      border: 1px dashed #bfb3ae;
+      background: #f5f1ee;
+      color: var(--muted);
+      font-size: .875rem;
+    }
+    .gallery-slide figcaption { min-height: 3.15rem; padding-block: .6rem .4rem; color: var(--muted); font-size: .875rem; line-height: 1.45; }
+    .gallery-slide + .gallery-slide:not([hidden]) { margin-top: 1rem; }
+    .gallery.is-active .gallery-slide { margin-top: 0; }
+    .gallery-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+      padding-top: .15rem;
+      border-top: 1px solid var(--line);
+    }
+    .gallery-controls button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      min-height: 44px;
+      min-width: 44px;
+      padding: .4rem .6rem;
+      border: 0;
+      border-radius: 3px;
+      background: transparent;
+      color: var(--red-dark);
+      font: 700 .875rem/1 Inter, "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+    .gallery-controls button:hover:not([aria-disabled="true"]) { background: #f1e8e3; }
+    .gallery-controls button[aria-disabled="true"] { opacity: .55; cursor: default; }
+    .chevron { width: .48rem; height: .48rem; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(-45deg); }
+    .chevron.previous { transform: rotate(135deg); }
+    .gallery-count { color: var(--muted); font-size: .875rem; font-variant-numeric: tabular-nums; }
+    .hero-gallery { --frame: 3 / 2; }
+    .hero-gallery figcaption, .hero-gallery .gallery-count { color: #ffeadf; }
+    .hero-gallery .gallery-controls { border-color: #ffffff38; }
+    .hero-gallery .gallery-controls button { color: white; }
+    .hero-gallery .gallery-controls button:hover:not([aria-disabled="true"]) { background: #ffffff24; }
+
+    .hero-tools { max-width: 43ch; margin-top: 1.25rem; color: #ffdbd2; font-size: .875rem; line-height: 1.5; }
+    .solar-work { padding-block: clamp(3rem, 6vw, 5.2rem); }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 1.65rem; }
+    .section-heading p { max-width: 35ch; color: var(--muted); }
+    .project-feature, .project-card { min-width: 0; border: 1px solid var(--line); border-radius: 6px; background: white; }
+    .project-feature { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(1.25rem, 3.5vw, 2.75rem); padding: clamp(1.1rem, 2.5vw, 1.75rem); }
+    .project-feature .project-copy { align-self: start; padding: clamp(.25rem, 1.5vw, 1rem) clamp(0rem, 1vw, .75rem) 0 0; }
+    .project-type { margin-bottom: .6rem; }
+    .project-copy > p:not(.project-type), .stage-copy > p:not(.eyebrow) { margin-top: .85rem; color: var(--muted); }
+    .project-copy > p.outcome, .stage-copy > p.outcome { margin-top: 1.05rem; padding-left: .8rem; border-left: 2px solid var(--red); color: var(--ink); font-weight: 700; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 1.25rem; margin-top: 1.25rem; }
+    .project-card { padding: clamp(1.1rem, 2.5vw, 1.5rem); }
+    .project-card .project-copy { margin-top: 1rem; }
+    .steering-feature { margin-top: 1.25rem; }
+    .steering-feature .gallery { --frame: 8 / 5; }
+    .technical-drawing { margin-top: 1.25rem; }
+    .technical-drawing img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; }
+    .technical-drawing figcaption { margin-top: .45rem; color: var(--muted); font-size: .875rem; }
+    .technical-drawing a { display: inline-flex; align-items: center; min-height: 44px; color: var(--red-dark); font-weight: 700; }
+    details { margin-top: 1rem; border-top: 1px solid var(--line); }
+    summary { position: relative; padding: .7rem 1.7rem .7rem 0; color: var(--red-dark); font-size: .9rem; font-weight: 700; list-style: none; cursor: pointer; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: .2rem; top: .45rem; font-size: 1.2rem; font-weight: 400; }
+    details[open] > summary::after { content: "−"; }
+    .case-detail { padding-bottom: .6rem; color: var(--muted); font-size: .9375rem; }
+    .case-detail p + p { margin-top: .7rem; }
+    .hero-details { max-width: 43ch; border-color: #ffffff38; }
+    .hero-details summary { color: var(--white); }
+    .hero-details .case-detail { color: #fff1ec; }
+    .further-work { margin-top: 1.75rem; border-bottom: 1px solid var(--line); }
+    .further-work > summary { padding-block: 1rem; }
+    .further-work > summary::after { top: .75rem; }
+    .further-grid { margin-top: 0; padding-bottom: 1.25rem; }
+    .further-grid h3 { font-size: clamp(1.25rem, 2.3vw, 1.65rem); }
+    .further-grid .gallery { --frame: 16 / 10; }
+
+    .stage-section { padding-block: clamp(2.75rem, 6vw, 4.75rem); background: #eee9e5; border-block: 1px solid var(--line); }
+    .stage-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(1.25rem, 4vw, 3.3rem); align-items: start; }
+    .stage-copy .eyebrow { margin-bottom: .7rem; }
+    .stage-layout .gallery { --frame: 4 / 3; }
+    .stage-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; margin-block: 1.25rem .5rem; }
+    .stage-metrics div { border-top: 1px solid #c7bbb6; padding-top: .65rem; }
+    .stage-metrics dt { color: var(--muted); font-size: .8125rem; line-height: 1.35; }
+    .stage-metrics dd { margin: .2rem 0 0; color: var(--red-dark); font-size: clamp(1.45rem, 3.2vw, 2.35rem); font-weight: 700; line-height: 1.2; }
+    .stage-metrics small { font-size: .57em; }
+    .contact { display: flex; justify-content: space-between; align-items: end; gap: 1rem 2rem; padding-block: 2.5rem; }
+    .contact h2 { font-size: 1.7rem; }
+    .contact p { margin-top: .3rem; color: var(--muted); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: .65rem 1.4rem; color: var(--red-dark); font-size: .9rem; }
+
+    @media (max-width: 860px) {
+      .wrap { width: calc(100% - 56px); }
+      .hero { gap: 1.6rem; }
+    }
+    @media (max-width: 720px) {
+      .wrap { width: calc(100% - 36px); }
+      .site-header { min-height: 62px; }
+      .site-header nav { gap: .6rem .85rem; }
+      .site-header .precision-nav { display: none; }
+      .hero, .project-feature, .project-grid, .stage-layout { grid-template-columns: minmax(0, 1fr); }
+      .hero { gap: 1.5rem; }
+      .hero h1 { max-width: 12ch; }
+      .hero-copy { max-width: 43ch; }
+      .project-feature .project-copy { padding: 0; }
+      .section-heading, .contact { display: block; }
+      .section-heading p, .contact-links { margin-top: .7rem; }
+    }
+    @media print {
+      .wrap { width: 100%; }
+      .masthead, .stage-section { background: white; color: var(--ink); }
+      .hero-copy, .hero-tools, .hero .eyebrow, .hero-gallery figcaption { color: var(--ink); }
+      .hero-details { border-color: var(--line); }
+      .hero-details summary, .hero-details .case-detail { color: var(--ink); }
+      .skip-link, .site-header nav, .hero-link, .gallery-controls { display: none; }
+      .hero, .solar-work, .stage-section, .contact { padding-block: 1rem; }
+      .gallery-slide:not(:first-child) { display: none; }
+      .gallery-slide:first-child[hidden] { display: block !important; }
+      .project-feature, .project-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#work">Skip to projects</a>
+  <div class="masthead">
+    <header class="site-header wrap">
+      <a class="identity" href="#top">Sven Onland</a>
+      <nav aria-label="Main navigation">
+        <a href="#work">Projects</a>
+        <a class="precision-nav" href="#precision">Precision stage</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <section class="hero wrap" aria-labelledby="intro-title">
+      <div>
+        <p class="eyebrow">Mechanical engineering portfolio</p>
+        <h1 id="intro-title">Mechanisms built and tested.</h1>
+        <p class="hero-copy">I’m a Mechanical Engineering master’s student at the University of Twente. I designed, prototyped and tested mechanical systems for Solar Team Twente’s 2025 race car, which finished second at the Bridgestone World Solar Challenge, and built a precision parallel guide motion stage.</p>
+        <details class="hero-details">
+          <summary>Read more about the solar car project</summary>
+          <div class="case-detail">
+            <p>I was part of Solar Team Twente, a student team where I worked full-time for one year with 16 other students to build a solar car for the Bridgestone World Solar Challenge 2025 in Australia. As a mechanical engineer, I took mechanical systems from concept through MATLAB calculations, Siemens NX design and 3D-printed prototypes. I helped manufacture, assemble and test the car, and we raced it in Australia to a second-place finish.</p>
+          </div>
+        </details>
+        <a class="hero-link" href="#work">View projects</a>
+        <p class="hero-tools">Tools: Siemens NX, MATLAB/Simulink, Ansys, SPACAR, FDM prototyping (ABS, PETG, PC-CF), carbon-fiber composite lay-up.</p>
+      </div>
+          <div class="gallery hero-gallery" role="group" aria-roledescription="carousel" aria-label="RED Discover images">
+            <figure class="gallery-slide">
+              <img src="images/web/red-discover-race.webp" alt="RED Discover, a red and white solar car, racing on an Australian road"
+                style="--x: 52%; --y: 63%" fetchpriority="high" decoding="async">
+              <figcaption>RED Discover at the 2025 Bridgestone World Solar Challenge.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/red-discover-charging.webp" alt="RED Discover parked with its solar deck raised"
+                style="--x: 44%; --y: 56%" loading="lazy" decoding="async">
+              <figcaption>The solar deck raised in the charging configuration.</figcaption>
+            </figure>
+            <div class="gallery-controls" hidden>
+              <button type="button" data-step="-1" aria-label="Previous image">
+                <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+              </button>
+              <span class="gallery-count" aria-hidden="true"></span>
+              <button type="button" data-step="1" aria-label="Next image">
+                <span>Next</span><span aria-hidden="true" class="chevron"></span>
+              </button>
+            </div>
+            <p class="sr-only gallery-status" role="status"></p>
+          </div>
+    </section>
+  </div>
+
+  <main>
+    <section class="solar-work wrap" id="work" aria-labelledby="solar-title">
+      <div class="section-heading">
+        <h2 id="solar-title">Solar Team Twente</h2>
+        <p>Mechanical systems I developed for RED Discover, from CAD through manufacture, assembly and race testing.</p>
+      </div>
+
+      <article class="project-feature" aria-labelledby="latch-title">
+          <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Canopy latch images">
+            <figure class="gallery-slide">
+              <img src="images/web/latch-installed.webp" alt="Canopy latch bolted to the carbon-fiber structure with its red release cable attached"
+                style="--x: 50%; --y: 50%" loading="lazy" decoding="async">
+              <figcaption>Installed latch in the closed position, with the hook engaged and the release cable attached.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/latch-cad.webp" alt="CAD view of the canopy latch showing the hook, spring and mounting bracket"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>Early CAD design showing the hook, return spring and mounting bracket.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/latch-prototype.webp" alt="Light-colored printed latch components assembled with metal springs and fasteners"
+                style="--x: 50%; --y: 52%" loading="lazy" decoding="async">
+              <figcaption>A printed prototype for checking engagement and spring return.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/latch-alignment.webp" alt="Red printed alignment tool holding the canopy brackets against the bodywork"
+                style="--x: 48%; --y: 51%" loading="lazy" decoding="async">
+              <figcaption>Printed fixture for aligning the latch brackets during bonding.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/latch-released.webp" alt="Open canopy latch with the hook and release lever visible against the carbon-fiber structure"
+                style="--x: 48%; --y: 51%" loading="lazy" decoding="async">
+              <figcaption>Installed latch in the open position, with the hook and release lever visible.</figcaption>
+            </figure>
+            <div class="gallery-controls" hidden>
+              <button type="button" data-step="-1" aria-label="Previous image">
+                <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+              </button>
+              <span class="gallery-count" aria-hidden="true"></span>
+              <button type="button" data-step="1" aria-label="Next image">
+                <span>Next</span><span aria-hidden="true" class="chevron"></span>
+              </button>
+            </div>
+            <p class="sr-only gallery-status" role="status"></p>
+          </div>
+        <div class="project-copy">
+          <p class="project-type">Mechanism design · Rapid prototyping</p>
+          <h3 id="latch-title">Two-stage canopy latch</h3>
+          <p>I designed a latch that could release from inside or outside the car to support a 15-second emergency-exit requirement. I used filament-printed prototypes to refine two-stage latch geometry and torsion-spring return.</p>
+          <p class="outcome">The latch I designed met the 15 s emergency-exit requirement. Every driver completed the test in 10 s.</p>
+          <details open>
+            <summary>Design decisions and testing</summary>
+            <div class="case-detail">
+              <p>I examined an automotive latch and developed a hook-and-pin mechanism for our canopy. The hook had to rotate to release, and a cable coupled the latches for simultaneous operation.</p>
+              <p>I used 3D-printed prototypes to check engagement and spring return, then printed a fixture to align the brackets during bonding. When testing revealed wear, I replaced the aluminum contact parts with steel and used them in the race.</p>
+              <p>During scrutineering, each driver was timed individually as they released the latch and exited the car.</p>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <div class="project-grid">
+        <article class="project-card" aria-labelledby="supports-title">
+          <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Solar deck support images">
+            <figure class="gallery-slide">
+              <img src="images/web/support-race-deck.webp" alt="Side view of RED Discover with the solar deck raised and its telescopic supports deployed"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>Three telescopic supports hold RED Discover's deck open.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/support-retracted-cad.webp" alt="CAD render of the retracted telescopic support with its clamp and release lever"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>Retracted support with the clamp and release lever at one end.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/support-extended-cad.webp" alt="CAD render of the telescopic support fully extended"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>Extended support showing how the inner tube slides out of the outer tube.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/support-under-deck-cad.webp" alt="CAD cutaway showing the angled supports between the body and the partly raised solar deck"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>CAD cutaway showing where the supports mount beneath the partly raised deck.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/support-clamp-installed.webp" alt="Printed clamp and silver release lever on a telescopic carbon-fiber tube"
+                style="--x: 45%; --y: 60%" loading="lazy" decoding="async">
+              <figcaption>Installed clamp on one of the telescopic supports.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/support-marked-print.webp" alt="Hand holding a printed clamp with a small revision marking on its curved body"
+                style="--x: 50%; --y: 53%" loading="lazy" decoding="async">
+              <figcaption>I marked the printed clamps to track each revision.</figcaption>
+            </figure>
+            <div class="gallery-controls" hidden>
+              <button type="button" data-step="-1" aria-label="Previous image">
+                <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+              </button>
+              <span class="gallery-count" aria-hidden="true"></span>
+              <button type="button" data-step="1" aria-label="Next image">
+                <span>Next</span><span aria-hidden="true" class="chevron"></span>
+              </button>
+            </div>
+            <p class="sr-only gallery-status" role="status"></p>
+          </div>
+          <div class="project-copy">
+            <p class="project-type">Additive manufacturing · Materials</p>
+            <h3 id="supports-title">Telescopic solar deck sticks</h3>
+            <p>I sized three telescopic supports in MATLAB and designed them in CAD so they could extend with the deck and lock it at different charging angles. I iterated a printed clamp that gripped the tube under load and let it slide freely when released.</p>
+            <p class="outcome">The PC-CF clamps I developed held the 30 kg solar deck open at angles as low as 20°.</p>
+            <details open>
+              <summary>Clamp iterations and material choice</summary>
+              <div class="case-detail">
+                <p>Early clamps either cracked under load or gripped too tightly to release and slide. I changed the geometry and clearances and compared materials including ABS, PETG and carbon-fiber-filled polycarbonate (PC-CF).</p>
+                <p>I added revision marks to the prints to track each test, then assembled and installed the full support mechanism.</p>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article class="project-card" aria-labelledby="brakes-title">
+          <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Brake assembly images">
+            <figure class="gallery-slide">
+              <img src="images/web/brake-workshop.webp" alt="Hand holding the built carbon-fiber brake bracket, pedal and hydraulic lines"
+                style="--x: 48%; --y: 66%" loading="lazy" decoding="async">
+              <figcaption>Assembled brake pedal, master cylinders and carbon-fiber bracket.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/brake-assembly-render.webp" alt="Siemens NX rendering of the carbon-fiber bracket and pedal with two master cylinders behind the bracket"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>Siemens NX render of the pedal, twin master cylinders and carbon-fiber bracket.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/brake-bench.webp" alt="Close-up of the two inline master cylinders on the workbench"
+                style="--x: 50%; --y: 60%" loading="lazy" decoding="async">
+              <figcaption>Bench view of the twin master cylinders after the carrier and piston bent during assembly.</figcaption>
+            </figure>
+            <div class="gallery-controls" hidden>
+              <button type="button" data-step="-1" aria-label="Previous image">
+                <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+              </button>
+              <span class="gallery-count" aria-hidden="true"></span>
+              <button type="button" data-step="1" aria-label="Next image">
+                <span>Next</span><span aria-hidden="true" class="chevron"></span>
+              </button>
+            </div>
+            <p class="sr-only gallery-status" role="status"></p>
+          </div>
+          <div class="project-copy">
+            <p class="project-type">System design · FEA · Composites</p>
+            <h3 id="brakes-title">Lightweight brake assembly</h3>
+            <p>I sized the hydraulics (master cylinders, calipers) in MATLAB and designed the pedal, bracket and inserts in Siemens NX. I analyzed the structure in Ansys and helped manufacture the composite bracket.</p>
+            <p class="outcome">My brake assembly was 375 g lighter than the 2023 car's assembly, an estimated saving of 20 s over the full race.</p>
+            <details open>
+              <summary>Manufacture and load-path correction</summary>
+              <div class="case-detail">
+                <p>I reused the existing caliper from our 2023 car and designed the new assembly around pedal travel, new master cylinders and service access. A teammate designed the mold, and we laid up the 20-layer bracket together.</p>
+                <p>During initial assembly, the load path through the cylinder carrier put the carrier and piston in bending. I added shims to transfer force more directly between the cylinders. The revised assembly held up through subsequent tests and the race.</p>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+
+      <article class="project-feature steering-feature" id="steering" aria-labelledby="steering-title">
+        <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Steering system images">
+          <figure class="gallery-slide">
+            <img src="images/web/steering-cable-decision.webp" alt="Side-by-side close-ups of the printed steering test setup and the revised cable route, traced past the added pulley"
+              style="--fit: contain" loading="lazy" decoding="async">
+            <figcaption>I used the printed test setup to check whether an added pulley could align the cable with the bonded brackets.</figcaption>
+          </figure>
+          <figure class="gallery-slide">
+            <img src="images/web/steering-installed.webp" alt="Steering shaft and linkages installed inside RED Discover’s driver compartment"
+              style="--x: 50%; --y: 52%" loading="lazy" decoding="async">
+            <figcaption>Steering shaft and linkages installed in the driver compartment.</figcaption>
+          </figure>
+          <figure class="gallery-slide">
+            <img src="images/web/steering-cad.webp" alt="CAD assembly showing the steering shaft, cable pulleys and linkages"
+              style="--fit: contain" loading="lazy" decoding="async">
+            <figcaption>CAD assembly of the steering system.</figcaption>
+          </figure>
+          <figure class="gallery-slide">
+            <img src="images/web/steering-cable-route.webp" alt="Steering cable running between pulley brackets on the carbon-fiber structure"
+              style="--fit: contain" loading="lazy" decoding="async">
+            <figcaption>Steering cable routing between the upper and lower pulley brackets.</figcaption>
+          </figure>
+          <figure class="gallery-slide">
+            <img src="images/web/steering-bracket-fea.webp" alt="Ansys finite-element mesh of a steering bracket colored by von Mises stress"
+              style="--fit: contain" loading="lazy" decoding="async">
+            <figcaption>Ansys von Mises stress plot for a steering bracket.</figcaption>
+          </figure>
+          <div class="gallery-controls" hidden>
+            <button type="button" data-step="-1" aria-label="Previous slide">
+              <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+            </button>
+            <span class="gallery-count" aria-hidden="true"></span>
+            <button type="button" data-step="1" aria-label="Next slide">
+              <span>Next</span><span aria-hidden="true" class="chevron"></span>
+            </button>
+          </div>
+          <p class="sr-only gallery-status" role="status"></p>
+        </div>
+        <div class="project-copy">
+          <p class="project-type">Steering geometry · Prototyping · Technical drawings</p>
+          <h3 id="steering-title">Steering system</h3>
+          <p>I recalculated the steering geometry in MATLAB for the new wheelbase and track width, targeting a 7.5 m turning radius.</p>
+          <p class="outcome">I designed an added pulley bracket to realign the cable. The revised steering completed testing and the race.</p>
+          <figure class="technical-drawing">
+            <img src="images/web/steering-rack-housing-drawing.webp" alt="Steering rack housing drawing 33300-08 revision A, showing section views, dimensions, tolerances and an isometric view"
+              width="1600" height="1132" loading="lazy" decoding="async">
+            <figcaption>
+              My production drawing for the steering rack housing, 33300-08 revision A (Confidential)<br>
+              <a href="images/33300-08-A.Stuurhuis.19-11-24.pdf" download="33300-08-A.Stuurhuis.19-11-24.pdf">Download full drawing (PDF)</a>
+            </figcaption>
+          </figure>
+          <details>
+            <summary>Steering geometry and cable routing</summary>
+            <div class="case-detail">
+              <p>I changed the link lengths to fit the driver compartment and used a steel fixture to align the bonded brackets. A pulley bearing failed during testing after the cable ran out of alignment. I used the printed test setup to check the revised route before implementing it in the car.</p>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <details class="further-work">
+        <summary>More work on RED Discover</summary>
+        <div class="project-grid further-grid">
+          <article class="project-card" aria-labelledby="canopy-hinge-title">
+            <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Canopy hinge images">
+              <figure class="gallery-slide">
+                <img src="images/web/canopy-hinge-installed.webp" alt="Raised canopy supported by two hinge linkages on RED Discover"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Canopy hinge linkages installed on RED Discover with the canopy raised.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/canopy-hinge-cad.webp" alt="CAD render showing the pivot joints and mounting plates of the paired canopy linkages"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>CAD view showing the pivot joints and mounting plates for the two canopy linkages.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/canopy-hinge-linkages.webp" alt="Two machined canopy hinge linkages laid out on a workbench"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>The two canopy hinge linkages on the bench.</figcaption>
+              </figure>
+              <div class="gallery-controls" hidden>
+                <button type="button" data-step="-1" aria-label="Previous slide">
+                  <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+                </button>
+                <span class="gallery-count" aria-hidden="true"></span>
+                <button type="button" data-step="1" aria-label="Next slide">
+                  <span>Next</span><span aria-hidden="true" class="chevron"></span>
+                </button>
+              </div>
+              <p class="sr-only gallery-status" role="status"></p>
+            </div>
+            <div class="project-copy">
+              <h3 id="canopy-hinge-title">Canopy hinge</h3>
+              <p>Paired hinge linkages guide the canopy as it opens for driver access.</p>
+              <details>
+                <summary>Hinge layout and installation</summary>
+                <div class="case-detail">
+                  <p>The two linkages guide the canopy through multiple pivot joints. The CAD view shows where each linkage attaches, and the bench and installation photos show the same geometry in the machined assemblies.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="project-card" aria-labelledby="deck-opening-title">
+            <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Solar deck opening hinge and assist images">
+              <figure class="gallery-slide">
+                <img src="images/web/deck-opening-schematic.webp" alt="Schematic side view of the raised deck, with the hinge at one end and the gas spring connected between the deck and chassis mounts"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>The gas spring extends between the chassis and deck as the deck opens about the hinge.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/deck-charging-race.webp" alt="Solar Team Twente standing beside RED Discover with the solar deck raised"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>RED Discover with its solar deck raised for charging during the race.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/deck-hinge-bracket-fea.webp" alt="Ansys finite-element mesh of the underbody hinge bracket colored by von Mises stress"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Ansys von Mises stress plot for the underbody bracket that carries the solar deck hinge.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/deck-hinge-assembly.webp" alt="Two solar deck hinge links and their mounting brackets during workshop assembly"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Solar deck hinge links and mounting brackets during assembly.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/deck-gas-spring-installed.webp" alt="Gas spring mounted at an angle beneath the open solar deck near a rear wheel"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Installed gas spring beneath the open deck, near the rear wheel.</figcaption>
+              </figure>
+              <div class="gallery-controls" hidden>
+                <button type="button" data-step="-1" aria-label="Previous slide">
+                  <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+                </button>
+                <span class="gallery-count" aria-hidden="true"></span>
+                <button type="button" data-step="1" aria-label="Next slide">
+                  <span>Next</span><span aria-hidden="true" class="chevron"></span>
+                </button>
+              </div>
+              <p class="sr-only gallery-status" role="status"></p>
+            </div>
+            <div class="project-copy">
+              <h3 id="deck-opening-title">Solar deck opening hinge and assist</h3>
+              <p>The hinge lets the 30 kg deck pivot into its charging position. I designed the gas-spring assist and verified that the driver could open the deck from the seat.</p>
+              <details>
+                <summary>Hinge bracket and gas-spring testing</summary>
+                <div class="case-detail">
+                  <p>I designed the charging configuration around the bodywork and driver position. The hinge bracket study shows the stress distribution in its underbody mount. I modeled the deck motion in MATLAB to compare gas-spring mounting points, lengths and forces, then tested the options with the driver seated. The final setup assisted the 6 m² deck through its travel while letting it stay closed on its own.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="project-card" aria-labelledby="composites-title">
+            <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Composite manufacturing images">
+              <figure class="gallery-slide">
+                <img src="images/web/composite-shell-mould.webp" alt="Team member working beside the full-length shell mold in the composites workshop"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Full-length shell mold during composite manufacturing.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/composite-vacuum-bag.webp" alt="Car shell mold sealed under a translucent vacuum bag"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Vacuum-bagged shell before autoclave curing.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/composite-solar-decks.webp" alt="Two carbon-fiber solar deck structures on workshop stands with cut-outs in their inner panels"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Carbon-fiber solar deck structures on stands before final assembly.</figcaption>
+              </figure>
+              <figure class="gallery-slide">
+                <img src="images/web/composite-car-fit-up.webp" alt="Unpainted carbon-fiber car in the workshop with the deck in place and the driver's seat exposed"
+                  style="--fit: contain" loading="lazy" decoding="async">
+                <figcaption>Unpainted carbon-fiber body and deck during workshop fit-up.</figcaption>
+              </figure>
+              <div class="gallery-controls" hidden>
+                <button type="button" data-step="-1" aria-label="Previous slide">
+                  <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+                </button>
+                <span class="gallery-count" aria-hidden="true"></span>
+                <button type="button" data-step="1" aria-label="Next slide">
+                  <span>Next</span><span aria-hidden="true" class="chevron"></span>
+                </button>
+              </div>
+              <p class="sr-only gallery-status" role="status"></p>
+            </div>
+            <div class="project-copy">
+              <h3 id="composites-title">Composite manufacturing</h3>
+              <p>I worked with six teammates to manufacture and assemble RED Discover's carbon-fiber shell, solar deck and monocoque.</p>
+              <details>
+                <summary>Carbon-fiber lay-up and mounting points</summary>
+                <div class="case-detail">
+                  <p>I built provisions into the molds for aluminum mounts that would be laminated into the carbon-fiber parts. We laid up prepreg around foam cores where required, compacted the layers, vacuum-bagged the parts for autoclave curing, then trimmed and bonded them.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+        </div>
+      </details>
+    </section>
+
+    <section class="stage-section" id="precision" aria-labelledby="stage-title">
+      <div class="stage-layout wrap">
+        <div class="stage-copy">
+          <p class="eyebrow">University of Twente · Two-student project</p>
+          <h2 id="stage-title">Leaf-spring tracking stage</h2>
+          <p class="outcome">I sized the leaf springs and built the Simulink PID controller. In testing, the stage met its tracking-error limit.</p>
+          <p>We measured the position error between the moving reference stage and the tracking stage over the test trajectory.</p>
+          <dl class="stage-metrics" aria-label="Position tracking error over the test trajectory">
+            <div><dt>Maximum allowed error</dt><dd>60 <small>µm</small></dd></div>
+            <div><dt>Maximum measured error</dt><dd>54.7 <small>µm</small></dd></div>
+            <div><dt>Error after settling</dt><dd>35 <small>µm</small></dd></div>
+          </dl>
+          <details open>
+            <summary>Modeling and validation</summary>
+            <div class="case-detail">
+              <p>I calculated the stiffnesses and initial spring dimensions by hand. My partner built the initial SPACAR model in MATLAB for stress and modal analysis. I used that model to implement a design optimization loop.</p>
+              <p>My project partner and I assembled the hardware, tested the stage and tuned the PID settings together.</p>
+            </div>
+          </details>
+        </div>
+          <div class="gallery" role="group" aria-roledescription="carousel" aria-label="Leaf-spring tracking stage images">
+            <figure class="gallery-slide">
+              <img src="images/web/stage-hardware.webp" alt="Two photos of the built tracking stage with labels for the voice-coil motor, leaf springs and encoder"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>Built setup with the active and passive stages, leaf springs and encoder.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/stage-cad.webp" alt="Annotated CAD views of the two stages, voice-coil motor, leaf springs and encoder"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>CAD views of the mechanical layout and feedback hardware.</figcaption>
+            </figure>
+            <figure class="gallery-slide">
+              <img src="images/web/stage-response.webp" alt="Plot of tracking error and controller voltage over one second"
+                style="--x: 50%; --y: 50%; --fit: contain" loading="lazy" decoding="async">
+              <figcaption>Measured tracking error and controller voltage during testing.</figcaption>
+            </figure>
+            <div class="gallery-controls" hidden>
+              <button type="button" data-step="-1" aria-label="Previous image">
+                <span aria-hidden="true" class="chevron previous"></span><span>Previous</span>
+              </button>
+              <span class="gallery-count" aria-hidden="true"></span>
+              <button type="button" data-step="1" aria-label="Next image">
+                <span>Next</span><span aria-hidden="true" class="chevron"></span>
+              </button>
+            </div>
+            <p class="sr-only gallery-status" role="status"></p>
+          </div>
+      </div>
+    </section>
+
+    <footer class="contact wrap" id="contact" aria-labelledby="contact-title">
+      <div>
+        <h2 id="contact-title">Sven Onland</h2>
+        <p>Mechanical Engineering MSc student · University of Twente · Available from February–March 2027</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:s.onland2003@gmail.com">s.onland2003@gmail.com</a>
+        <a href="https://www.linkedin.com/in/sven-onland" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+  <script id="gallery-script">
+    for (const gallery of document.querySelectorAll(".gallery")) {
+      const slides = [...gallery.querySelectorAll(".gallery-slide")];
+      if (slides.length < 2) continue;
+
+      const controls = gallery.querySelector(".gallery-controls");
+      const [previous, next] = controls.querySelectorAll("button");
+      const count = gallery.querySelector(".gallery-count");
+      const status = gallery.querySelector(".gallery-status");
+      let current = 0;
+
+      function show(index, announce = true) {
+        if (index < 0 || index >= slides.length) return;
+        current = index;
+        slides.forEach((slide, position) => { slide.hidden = position !== current; });
+        previous.setAttribute("aria-disabled", String(current === 0));
+        next.setAttribute("aria-disabled", String(current === slides.length - 1));
+        count.textContent = `${current + 1} / ${slides.length}`;
+
+        if (announce) {
+          const slide = slides[current];
+          const caption = slide.querySelector("figcaption").textContent;
+          const placeholder = slide.querySelector(".gallery-placeholder");
+          status.textContent = `Slide ${current + 1} of ${slides.length}. ${placeholder ? "Image pending. " : ""}${caption}`;
+        }
+      }
+
+      previous.addEventListener("click", () => show(current - 1));
+      next.addEventListener("click", () => show(current + 1));
+      controls.addEventListener("keydown", (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+          event.preventDefault();
+          show(current + (event.key === "ArrowRight" ? 1 : -1));
+        }
+      });
+
+      show(0, false);
+      gallery.classList.add("is-active");
+      controls.hidden = false;
+    }
+
+    window.addEventListener("beforeprint", () => document.querySelectorAll("details").forEach((d) => { d.open = true; }));
+  </script>
+</body>
+</html>
