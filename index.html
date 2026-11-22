@@ -3,243 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Sven Onland’s mechanical engineering portfolio, featuring solar-car mechanisms, physical prototyping and precision motion control.">
+  <meta name="description" content="Sven Onland, Mechanical Engineering MSc student at the University of Twente. Explore his work in mechanical design, solar-car prototyping and precision motion control.">
+  <meta name="author" content="Sven Onland">
   <meta name="theme-color" content="#831410">
   <title>Sven Onland | Mechanical Engineering Portfolio</title>
-  <style>
-    @font-face {
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url("fonts/Inter-Regular.ttf") format("truetype");
+  <meta name="keywords" content="Sven Onland, Mechanical Engineering MSc, University of Twente, Solar Team Twente, mechanical design, Siemens NX, CAD, technical drawings, Ansys, finite element analysis, MATLAB, Simulink, FDM 3D printing, carbon-fiber composites, precision motion control, flexure design, SPACAR, PID control, flexible multibody dynamics">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Sven Onland | Engineering Portfolio">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Sven Onland | Mechanical Engineering Portfolio">
+  <meta property="og:description" content="Sven Onland, Mechanical Engineering MSc student at the University of Twente. Explore his work in mechanical design, solar-car prototyping and precision motion control.">
+  <meta property="profile:first_name" content="Sven">
+  <meta property="profile:last_name" content="Onland">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sven Onland | Mechanical Engineering Portfolio">
+  <meta name="twitter:description" content="Sven Onland, Mechanical Engineering MSc student at the University of Twente. Explore his work in mechanical design, solar-car prototyping and precision motion control.">
+  <link rel="stylesheet" href="portfolio.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "Sven Onland | Mechanical Engineering Portfolio",
+    "description": "Sven Onland, Mechanical Engineering MSc student at the University of Twente. Explore his work in mechanical design, solar-car prototyping and precision motion control.",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "#sven-onland",
+      "name": "Sven Onland",
+      "description": "Mechanical Engineering MSc student at the University of Twente",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Twente"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/sven-onland"
+      ],
+      "knowsAbout": [
+        "mechanical design",
+        "Siemens NX",
+        "CAD",
+        "technical drawings",
+        "Ansys",
+        "finite element analysis",
+        "MATLAB",
+        "Simulink",
+        "FDM 3D printing",
+        "carbon-fiber composites",
+        "precision motion control",
+        "flexure design",
+        "SPACAR",
+        "PID control",
+        "flexible multibody dynamics"
+      ]
     }
-    @font-face {
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 600 800;
-      font-display: swap;
-      src: url("fonts/Inter-Bold.ttf") format("truetype");
-    }
-    :root {
-      --red: #ad1e18;
-      --red-dark: #831410;
-      --paper: #faf8f5;
-      --ink: #242026;
-      --muted: #55504d;
-      --line: #ded8d5;
-      --white: #fff;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-padding-top: 24px; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.65 Inter, "Segoe UI", sans-serif; }
-    a { color: inherit; text-underline-offset: .25em; }
-    :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
-    h1, h2, h3, p, figure { margin: 0; }
-    h1, h2, h3 { font-weight: 700; line-height: 1.07; text-wrap: balance; }
-    h1 { font-size: clamp(2.8rem, 5.35vw, 5.3rem); letter-spacing: -.055em; }
-    h2 { font-size: clamp(2rem, 4.15vw, 3.5rem); letter-spacing: -.045em; }
-    h3 { font-size: clamp(1.65rem, 3vw, 2.4rem); letter-spacing: -.035em; }
-    [hidden] { display: none !important; }
-
-    .wrap { width: min(1152px, calc(100% - 88px)); margin-inline: auto; }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
-      border: 0;
-    }
-    .skip-link { position: absolute; z-index: 2; left: 1rem; top: 1rem; padding: .6rem 1rem; background: white; color: var(--red-dark); }
-    .skip-link:not(:focus) { clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; padding: 0; }
-
-    .masthead {
-      background: linear-gradient(128deg, #6e110e, #981a15 58%, #821410);
-      color: var(--white);
-    }
-    .site-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 74px; border-bottom: 1px solid #ffffff38; }
-    .identity { font-size: clamp(1.375rem, 2.25vw, 1.75rem); font-weight: 700; letter-spacing: -.035em; }
-    .site-header nav { display: flex; flex-wrap: wrap; gap: .65rem 1.8rem; font-size: .875rem; }
-    .site-header a { text-decoration: none; }
-    .site-header a:hover { text-decoration: underline; }
-    .hero { display: grid; grid-template-columns: minmax(0, .87fr) minmax(0, 1.13fr); align-items: center; gap: clamp(2rem, 5vw, 4.75rem); padding-block: clamp(2.5rem, 5vw, 5rem); }
-    .eyebrow, .project-type { color: var(--red-dark); font-size: .8125rem; font-weight: 700; letter-spacing: .09em; line-height: 1.45; text-transform: uppercase; }
-    .hero .eyebrow { color: #ffdbd2; margin-bottom: 1rem; }
-    .hero-copy { max-width: 36ch; margin-top: 1.25rem; color: #fff1ec; font-size: clamp(1rem, 1.48vw, 1.125rem); }
-    .hero-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1.5rem; padding-inline: 1rem; border-radius: 3px; background: #fff9f6; color: #72100c; font-size: .875rem; font-weight: 700; text-decoration: none; }
-    .hero-link:hover { background: #fce2d9; }
-    .hero-link:focus-visible { outline-color: white; }
-
-    /* Set --x and --y on each image. Use --fit: contain to show the full image. */
-    .gallery { min-width: 0; position: relative; color: var(--ink); }
-    .gallery-slide img, .gallery-placeholder {
-      width: 100%;
-      aspect-ratio: var(--frame, 4 / 3);
-      background: #ece8e4;
-      border-radius: 4px;
-    }
-    .gallery-slide img {
-      display: block;
-      object-fit: var(--fit, cover);
-      object-position: var(--x, 50%) var(--y, 50%);
-    }
-    .gallery-placeholder {
-      display: grid;
-      place-items: center;
-      border: 1px dashed #bfb3ae;
-      background: #f5f1ee;
-      color: var(--muted);
-      font-size: .875rem;
-    }
-    .gallery-slide figcaption { min-height: 3.15rem; padding-block: .6rem .4rem; color: var(--muted); font-size: .875rem; line-height: 1.45; }
-    .gallery-slide + .gallery-slide:not([hidden]) { margin-top: 1rem; }
-    .gallery.is-active .gallery-slide { margin-top: 0; }
-    .gallery-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: .5rem;
-      padding-top: .15rem;
-      border-top: 1px solid var(--line);
-    }
-    .gallery-controls button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .55rem;
-      min-height: 44px;
-      min-width: 44px;
-      padding: .4rem .6rem;
-      border: 0;
-      border-radius: 3px;
-      background: transparent;
-      color: var(--red-dark);
-      font: 700 .875rem/1 Inter, "Segoe UI", sans-serif;
-      cursor: pointer;
-    }
-    .gallery-controls button:hover:not([aria-disabled="true"]) { background: #f1e8e3; }
-    .gallery-controls button[aria-disabled="true"] { opacity: .55; cursor: default; }
-    .chevron { width: .48rem; height: .48rem; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(-45deg); }
-    .chevron.previous { transform: rotate(135deg); }
-    .gallery-count { color: var(--muted); font-size: .875rem; font-variant-numeric: tabular-nums; }
-    .hero-gallery { --frame: 3 / 2; }
-    .hero-gallery figcaption, .hero-gallery .gallery-count { color: #ffeadf; }
-    .hero-gallery .gallery-controls { border-color: #ffffff38; }
-    .hero-gallery .gallery-controls button { color: white; }
-    .hero-gallery .gallery-controls button:hover:not([aria-disabled="true"]) { background: #ffffff24; }
-
-    .hero-tools { max-width: 43ch; margin-top: 1.25rem; color: #ffdbd2; font-size: .875rem; line-height: 1.5; }
-    .solar-work { padding-block: clamp(3rem, 6vw, 5.2rem); }
-    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 1.65rem; }
-    .section-heading p { max-width: 35ch; color: var(--muted); }
-    .project-feature, .project-card { min-width: 0; border: 1px solid var(--line); border-radius: 6px; background: white; }
-    .project-feature { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(1.25rem, 3.5vw, 2.75rem); padding: clamp(1.1rem, 2.5vw, 1.75rem); }
-    .project-feature .project-copy { align-self: start; padding: clamp(.25rem, 1.5vw, 1rem) clamp(0rem, 1vw, .75rem) 0 0; }
-    .project-type { margin-bottom: .6rem; }
-    .project-copy > p:not(.project-type), .stage-copy > p:not(.eyebrow) { margin-top: .85rem; color: var(--muted); }
-    .project-copy > p.outcome, .stage-copy > p.outcome { margin-top: 1.05rem; padding-left: .8rem; border-left: 2px solid var(--red); color: var(--ink); font-weight: 700; }
-    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 1.25rem; margin-top: 1.25rem; }
-    .project-card { padding: clamp(1.1rem, 2.5vw, 1.5rem); }
-    .project-card .project-copy { margin-top: 1rem; }
-    .steering-feature { margin-top: 1.25rem; }
-    .steering-feature .gallery { --frame: 8 / 5; }
-    .technical-drawing { margin-top: 1.25rem; }
-    .technical-drawing img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; }
-    .technical-drawing figcaption { margin-top: .45rem; color: var(--muted); font-size: .875rem; }
-    .technical-drawing a { display: inline-flex; align-items: center; min-height: 44px; color: var(--red-dark); font-weight: 700; }
-    details { margin-top: 1rem; border-top: 1px solid var(--line); }
-    summary { position: relative; padding: .7rem 1.7rem .7rem 0; color: var(--red-dark); font-size: .9rem; font-weight: 700; list-style: none; cursor: pointer; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; position: absolute; right: .2rem; top: .45rem; font-size: 1.2rem; font-weight: 400; }
-    details[open] > summary::after { content: "−"; }
-    .case-detail { padding-bottom: .6rem; color: var(--muted); font-size: .9375rem; }
-    .case-detail p + p { margin-top: .7rem; }
-    .hero-details { max-width: 43ch; border-color: #ffffff38; }
-    .hero-details summary { color: var(--white); }
-    .hero-details .case-detail { color: #fff1ec; }
-    .further-work { margin-top: 1.75rem; border-bottom: 1px solid var(--line); }
-    .further-work > summary { padding-block: 1rem; }
-    .further-work > summary::after { top: .75rem; }
-    .further-grid { margin-top: 0; padding-bottom: 1.25rem; }
-    .further-grid h3 { font-size: clamp(1.25rem, 2.3vw, 1.65rem); }
-    .further-grid .gallery { --frame: 16 / 10; }
-
-    .stage-section { padding-block: clamp(2.75rem, 6vw, 4.75rem); background: #eee9e5; border-block: 1px solid var(--line); }
-    .stage-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(1.25rem, 4vw, 3.3rem); align-items: start; }
-    .stage-copy .eyebrow { margin-bottom: .7rem; }
-    .stage-layout .gallery { --frame: 4 / 3; }
-    .stage-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; margin-block: 1.25rem .5rem; }
-    .stage-metrics div { border-top: 1px solid #c7bbb6; padding-top: .65rem; }
-    .stage-metrics dt { color: var(--muted); font-size: .8125rem; line-height: 1.35; }
-    .stage-metrics dd { margin: .2rem 0 0; color: var(--red-dark); font-size: clamp(1.45rem, 3.2vw, 2.35rem); font-weight: 700; line-height: 1.2; }
-    .stage-metrics small { font-size: .57em; }
-    .contact { display: flex; justify-content: space-between; align-items: end; gap: 1rem 2rem; padding-block: 2.5rem; }
-    .contact h2 { font-size: 1.7rem; }
-    .contact p { margin-top: .3rem; color: var(--muted); }
-    .contact-links { display: flex; flex-wrap: wrap; gap: .65rem 1.4rem; color: var(--red-dark); font-size: .9rem; }
-
-    @media (max-width: 860px) {
-      .wrap { width: calc(100% - 56px); }
-      .hero { gap: 1.6rem; }
-    }
-    @media (max-width: 720px) {
-      .wrap { width: calc(100% - 36px); }
-      .site-header { min-height: 62px; }
-      .site-header nav { gap: .6rem .85rem; }
-      .site-header .precision-nav { display: none; }
-      .hero, .project-feature, .project-grid, .stage-layout { grid-template-columns: minmax(0, 1fr); }
-      .hero { gap: 1.5rem; }
-      .hero h1 { max-width: 12ch; }
-      .hero-copy { max-width: 43ch; }
-      .project-feature .project-copy { padding: 0; }
-      .section-heading, .contact { display: block; }
-      .section-heading p, .contact-links { margin-top: .7rem; }
-    }
-    @media print {
-      .wrap { width: 100%; }
-      .masthead, .stage-section { background: white; color: var(--ink); }
-      .hero-copy, .hero-tools, .hero .eyebrow, .hero-gallery figcaption { color: var(--ink); }
-      .hero-details { border-color: var(--line); }
-      .hero-details summary, .hero-details .case-detail { color: var(--ink); }
-      .skip-link, .site-header nav, .hero-link, .gallery-controls { display: none; }
-      .hero, .solar-work, .stage-section, .contact { padding-block: 1rem; }
-      .gallery-slide:not(:first-child) { display: none; }
-      .gallery-slide:first-child[hidden] { display: block !important; }
-      .project-feature, .project-card { break-inside: avoid; }
-    }
-  </style>
+  }
+  </script>
 </head>
 <body id="top">
-  <a class="skip-link" href="#work">Skip to projects</a>
+  <a class="skip-link" href="#main">Skip to main content</a>
   <div class="masthead">
     <header class="site-header wrap">
       <a class="identity" href="#top">Sven Onland</a>
       <nav aria-label="Main navigation">
+        <a href="#profile">Skills</a>
         <a href="#work">Projects</a>
-        <a class="precision-nav" href="#precision">Precision stage</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
-    <section class="hero wrap" aria-labelledby="intro-title">
+    <section class="hero wrap" aria-labelledby="sven-onland">
       <div>
-        <p class="eyebrow">Mechanical engineering portfolio</p>
-        <h1 id="intro-title">Mechanisms built and tested.</h1>
-        <p class="hero-copy">I’m a Mechanical Engineering master’s student at the University of Twente. I designed, prototyped and tested mechanical systems for Solar Team Twente’s 2025 race car, which finished second at the Bridgestone World Solar Challenge, and built a precision parallel guide motion stage.</p>
-        <details class="hero-details">
-          <summary>Read more about the solar car project</summary>
-          <div class="case-detail">
-            <p>I was part of Solar Team Twente, a student team where I worked full-time for one year with 16 other students to build a solar car for the Bridgestone World Solar Challenge 2025 in Australia. As a mechanical engineer, I took mechanical systems from concept through MATLAB calculations, Siemens NX design and 3D-printed prototypes. I helped manufacture, assemble and test the car, and we raced it in Australia to a second-place finish.</p>
-          </div>
-        </details>
-        <a class="hero-link" href="#work">View projects</a>
-        <p class="hero-tools">Tools: Siemens NX, MATLAB/Simulink, Ansys, SPACAR, FDM prototyping (ABS, PETG, PC-CF), carbon-fiber composite lay-up.</p>
+        <p class="eyebrow">Mechanical Engineering MSc · University of Twente</p>
+        <h1 id="sven-onland">Sven Onland</h1>
+        <p class="hero-copy">I’m a master’s student who designs, prototypes and tests mechanical systems. I spent a year as a mechanical engineer at Solar Team Twente, and I’ve built and tested a precision motion stage at the University of Twente.</p>
+        <p class="hero-availability">Available from February–March 2027</p>
+        <div class="hero-actions">
+          <a class="hero-link" href="#work">View engineering projects</a>
+          <a class="hero-contact" href="#contact">Contact me</a>
+        </div>
       </div>
           <div class="gallery hero-gallery" role="group" aria-roledescription="carousel" aria-label="RED Discover images">
             <figure class="gallery-slide">
@@ -266,11 +107,32 @@
     </section>
   </div>
 
-  <main>
+  <main id="main">
+    <section class="engineering-profile" id="profile" aria-labelledby="profile-title">
+      <div class="wrap">
+        <h2 id="profile-title">Engineering skills</h2>
+        <dl class="engineering-keywords">
+          <div>
+            <dt><a href="#steering-title">Mechanical design and analysis</a></dt>
+            <dd>Siemens NX CAD, MATLAB calculations, Ansys finite element analysis (FEA) and production drawings. I corrected the steering cable alignment and verified the new routing in testing and in the race.</dd>
+          </div>
+          <div>
+            <dt><a href="#brakes-title">Prototyping and manufacturing</a></dt>
+            <dd>FDM 3D printing in ABS, PETG and PC-CF, carbon-fiber prepreg lay-up and assembly. My brake assembly was 375 g lighter than the previous design.</dd>
+          </div>
+          <div>
+            <dt><a href="#precision">Precision engineering and control</a></dt>
+            <dd>Flexure design, SPACAR modeling and MATLAB/Simulink PID control. Our leaf-spring stage reached 54.7 µm maximum tracking error against a 60 µm limit.</dd>
+          </div>
+        </dl>
+        <p class="research">I co-authored a 2025 preprint on flexible multibody dynamics, comparing simulation models with measurements from a full-scale amusement ride. <a href="https://doi.org/10.21203/rs.3.rs-6347807/v1">Flexible multibody dynamics of the Enterprise amusement ride</a></p>
+      </div>
+    </section>
+
     <section class="solar-work wrap" id="work" aria-labelledby="solar-title">
       <div class="section-heading">
         <h2 id="solar-title">Solar Team Twente</h2>
-        <p>Mechanical systems I developed for RED Discover, from CAD through manufacture, assembly and race testing.</p>
+        <p>I worked full-time with 16 teammates to design, build and test RED Discover. We finished second at the 2025 Bridgestone World Solar Challenge in Australia.</p>
       </div>
 
       <article class="project-feature" aria-labelledby="latch-title">
@@ -473,14 +335,7 @@
           <h3 id="steering-title">Steering system</h3>
           <p>I recalculated the steering geometry in MATLAB for the new wheelbase and track width, targeting a 7.5 m turning radius.</p>
           <p class="outcome">I designed an added pulley bracket to realign the cable. The revised steering completed testing and the race.</p>
-          <figure class="technical-drawing">
-            <img src="images/web/steering-rack-housing-drawing.webp" alt="Steering rack housing drawing 33300-08 revision A, showing section views, dimensions, tolerances and an isometric view"
-              width="1600" height="1132" loading="lazy" decoding="async">
-            <figcaption>
-              My production drawing for the steering rack housing, 33300-08 revision A (Confidential)<br>
-              <a href="images/33300-08-A.Stuurhuis.19-11-24.pdf" download="33300-08-A.Stuurhuis.19-11-24.pdf">Download full drawing (PDF)</a>
-            </figcaption>
-          </figure>
+          <p>I created a production drawing for the steering rack housing with section views, dimensions and tolerances.</p>
           <details>
             <summary>Steering geometry and cable routing</summary>
             <div class="case-detail">
@@ -636,7 +491,7 @@
         <div class="stage-copy">
           <p class="eyebrow">University of Twente · Two-student project</p>
           <h2 id="stage-title">Leaf-spring tracking stage</h2>
-          <p class="outcome">I sized the leaf springs and built the Simulink PID controller. In testing, the stage met its tracking-error limit.</p>
+          <p class="outcome">I sized the leaf springs and built the Simulink PID controller. We measured 54.7 µm maximum tracking error against a 60 µm requirement.</p>
           <p>We measured the position error between the moving reference stage and the tracking stage over the test trajectory.</p>
           <dl class="stage-metrics" aria-label="Position tracking error over the test trajectory">
             <div><dt>Maximum allowed error</dt><dd>60 <small>µm</small></dd></div>
@@ -683,8 +538,8 @@
 
     <footer class="contact wrap" id="contact" aria-labelledby="contact-title">
       <div>
-        <h2 id="contact-title">Sven Onland</h2>
-        <p>Mechanical Engineering MSc student · University of Twente · Available from February–March 2027</p>
+        <h2 id="contact-title">Contact Sven Onland</h2>
+        <p>Mechanical Engineering MSc student at the University of Twente</p>
       </div>
       <div class="contact-links">
         <a href="mailto:s.onland2003@gmail.com">s.onland2003@gmail.com</a>
